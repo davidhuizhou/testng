@@ -2,11 +2,38 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Suite1">
-    <test name="test1">
-        <classes>
-            <class name="com.dzhou.testng.TestNGSimpleTest"/>
-            <class name="com.dzhou.testng.TestEmployeeDetails"/>
-            <class name="com.dzhou.testng.TestngAnnotation"/>
-        </classes>
-    </test>
+	<test name="test1">
+		<classes>
+			<class name="com.dzhou.testng.TestNGSimpleTest" />
+			<class name="com.dzhou.testng.TestEmployeeDetails" />
+			<class name="com.dzhou.testng.TestngAnnotation" />
+		</classes>
+	</test>
+	<test name="test2">
+		<groups>
+			<define name="all">
+				<include name="functest" />
+				<include name="checkintest" />
+			</define>
+
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.dzhou.testng.GroupTestExample" />
+		</classes>
+	</test>
+	<test name="test3">
+		<classes>
+			<class name="com.dzhou.testng.DependencyTestUsingAnnotation" />
+		</classes>
+	</test>
+	<test name="test4">
+
+		<parameter name="myName" value="manisha" />
+		<classes>
+			<class name="com.dzhou.testng.ParameterizedTest1" />
+		</classes>
+	</test>
 </suite>
