@@ -1,0 +1,51 @@
+<project name="TestNGTest" default="test" basedir=".">
+
+    <!-- Define <testng> task -->
+
+    <taskdef name="testng" classname="org.testng.TestNGAntTask">
+        <classpath>
+            <pathelement location="lib/testng-6.9.8.jar"/>
+            <pathelement location="lib/junit-3.8.1.jar"/>
+            <pathelement location="lib/jcommander-1.48.jar"/>
+        </classpath>
+    </taskdef>
+
+    <property name="testdir" location="test" />
+    <property name="srcdir" location="src" />
+    <property name="resourcedir" location="src/test/resources" />
+    <property name="libdir" location="lib" />
+    <property name="full-compile" value="true" />
+
+    <path id="classpath.base"/>
+    <path id="classpath.test">
+
+
+        <fileset dir="${libdir}">
+            <include name="**/*.jar" />
+        </fileset>
+
+        <pathelement location="${testdir}" />
+        <pathelement location="${srcdir}" />
+
+        <path refid="classpath.base" />
+    </path>
+
+    <target name="clean" >
+        <delete verbose="${full-compile}">
+            <fileset dir="${testdir}" includes="**/*.class" />
+        </delete>
+    </target>
+
+    <target name="compile" depends="clean">
+        <javac srcdir="${srcdir}" destdir="${testdir}" verbose="${full-compile}">
+            <classpath refid="classpath.test"/>
+        </javac>
+    </target>
+
+    <target name="test" depends="compile">
+        <testng outputdir="${testdir}" classpathref="classpath.test" haltOnFailure="false">
+            <xmlfileset dir="${resourcedir}" includes="testng.xml,testng2.xml"/>
+        </testng>
+    </target>
+
+</project>

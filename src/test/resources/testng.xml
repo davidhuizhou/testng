@@ -7,6 +7,8 @@
 			<class name="com.dzhou.testng.TestNGSimpleTest" />
 			<class name="com.dzhou.testng.TestEmployeeDetails" />
 			<class name="com.dzhou.testng.TestngAnnotation" />
+			<class name="com.dzhou.testng.ParamTestWithDataProvider1" />
+			<class name="com.dzhou.testng.ParamTestWithDataProvider2" />
 		</classes>
 	</test>
 	<test name="test2">

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Simple Logger Suite">
+    <listeners>
+        <listener class-name="com.dzhou.testng.CustomListener" />
+        <listener class-name="com.dzhou.testng.CustomReporter" />
+    </listeners>
+
+    <test name="Simple Logger test">
+        <classes>
+            <class name="com.dzhou.testng.SampleTest" />
+        </classes>
+    </test>
+</suite>
